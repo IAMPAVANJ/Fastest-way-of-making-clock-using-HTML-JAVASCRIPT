@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>file</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #MyClock{
+            display: flex;
+            justify-content: center;
+            
+        }
+
+
+    </style>
+</head>
+<body>
+ 
+    <div id="MyClock" class="clock" onload="showTime()">0:00</div>
+
+    <script>
+        function showTime(){
+            let date=new Date();
+            let h = date.getHours();
+            let m = date.getMinutes();
+            let s = date.getSeconds();
+            let session = "AM"
+
+            if(h==0){
+                h = 12;
+            }
+            if(h>12){
+                h = h-12
+            }
+
+            if(h<10){
+                h="0"+h;
+                session = "PM"
+            }
+            if(m<10){
+                m="0"+h;
+            }
+            if(s<10){
+                s="0"+h;
+            }
+            const time = `${h}:${m}:${s}${session}`;
+            document.getElementById("MyClock").innerText = time;
+
+            setTimeout(showTime,1000)
+
+
+        }
+
+        showTime();
+    </script>
+
+</body>
+</html>
